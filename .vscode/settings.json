@@ -1,0 +1,8 @@
+{
+    "editor.fontFamily": "JetBrainsMonoNL Nerd Font Mono",
+    "editor.fontSize": 18,
+    "editor.renderWhitespace": "all",
+    "files.associations": {
+        "stdio.h": "c"
+    }
+}
