@@ -3,7 +3,7 @@
 #include<stdlib.h>
 
 int Carga(int[], int, char[]);
-void Facturacion(int[], int, int[][12], int[], int[]); 
+void Facturacion(int[], int, int[][12], int[]); 
 int LeeYValida(int, int, int);
 int Busqueda(int[], int, int);
 char CargaServicio(char, char ,char);
@@ -17,7 +17,7 @@ int main(){
     char servicio[10];
 
     cant=Carga(codigo, 10, servicio);
-    Facturacion(codigo, cant, mEnergetica, trimestre, cantidadventas);
+    Facturacion(codigo, cant, mEnergetica, trimestre);
     
     MatrizEnergetica(mEnergetica, cant, codigo);
     Mayorfacturacion(trimestre, 4);
@@ -89,7 +89,7 @@ int Busqueda(int v[], int x, int lim ){
     }
     return pos;
 }
-void Facturacion(int vC[], int limite, int M[][12], int tri[], int cantven[]){
+void Facturacion(int vC[], int limite, int M[][12], int tri[]){
     int cod, mes, imp, pos, i=0;
 
     for(i=0; i<20; i++)
@@ -113,7 +113,6 @@ void Facturacion(int vC[], int limite, int M[][12], int tri[], int cantven[]){
         }while(imp<0);
         
         M[pos][mes-1]=imp;
-        cantven[pos]+=1;
 
         switch (mes){
         case 1:
@@ -166,16 +165,16 @@ void Mayorfacturacion(int trimestre[], int n){
             max=trimestre[i];
         }
     }
-    printf("\t|%d - $%d|", pos+1, max);
+    printf("\t|%d - $%d|\n", pos+1, max);
 }
 void ImporteServicio(int matriz[][12], char servicio[], int codigos[], int cantidad, int cantven[]){
     int pos, aux, importeServicioAgua=0, importeServicioGas=0, importeServicioLuz=0;
     for(int i=0; i<20; i++)
         printf("_");
-    printf("Importe por Servicio");
+    printf("\n\nImporte por Servicio\n");
     for(int i=0; i<cantidad; i++){
         aux=codigos[i];
-        pos=Busqueda(codigos[i], aux, cantidad);
+        pos=Busqueda(codigos, aux, cantidad);
         if(servicio[pos]=='A'){
             for(int j=0; j<12; j++){
                 importeServicioAgua+=matriz[pos][j];
@@ -192,6 +191,17 @@ void ImporteServicio(int matriz[][12], char servicio[], int codigos[], int canti
     }
     ListaImporteServicio(importeServicioAgua, importeServicioGas, importeServicioLuz);
     
+    for(int i=0; i<cantidad; i++){
+        for(int j=0; j<12; j++){
+            if(matriz[i][j]==0){
+                cantven[i]++;
+            }
+        }
+    }
+    printf("\n\nEmpresas que no facturaron en dos o mas meses\n");
+    for(int i=0; i<cantidad; i++)
+        if(cantven[i]>=2)
+            printf("| %d | ", codigos[i]);
 }
 
 void ListaImporteServicio(int agua, int gas, int luz){
@@ -218,6 +228,8 @@ void ListaImporteServicio(int agua, int gas, int luz){
             }
     }
 }
+
+
 /*
 
     mEnergetica(guarda importes)/codigos(para busqueda)
