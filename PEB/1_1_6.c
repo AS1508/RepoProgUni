@@ -158,7 +158,7 @@ void MatrizEnergetica(int matriz[][12], int limite, int vC[]){
 }
 void Mayorfacturacion(int trimestre[], int n){ 
     int i, max=0, pos;
-    printf("\nTrimestres de Mayor Facturacion\n");
+    printf("\nTrimestres de Mayor Facturacion\n\n");
     for(i=0; i<n; i++){
         if(trimestre[i]>=max){
             pos=i;
