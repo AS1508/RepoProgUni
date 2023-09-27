@@ -18,4 +18,4 @@ a continuacion se ingresa los siguientes datos con los movimientos del mes:
         c) informe las cuentas que en el mes han realizado mas de 5 
         extracciones
 
-*/
+*/ 
