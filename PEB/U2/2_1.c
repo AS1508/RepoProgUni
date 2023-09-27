@@ -7,8 +7,7 @@ struct Producto{
     int uVendidas;
     float iVendido;
 };
-struct Venta
-{
+struct Venta{
     int codigo;
     int cantidad;
 };
