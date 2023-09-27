@@ -8,6 +8,8 @@ struct datos{
     float prom;
 };
 
+//volver a repasar esto (importante)
+
 int main(){
     struct datos aux;
     int i;

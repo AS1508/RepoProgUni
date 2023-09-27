@@ -59,7 +59,7 @@ int main(){
 
 int buscar(char M[][100], char v2[], int cantidad){
     int i=0, pos=-1;
-    while(i<cantidad && pos=-1){
+    while((i<cantidad) && (pos=-1)){
         if(strcmp(M[i], v2[i])==0)
             pos=i;
         else
