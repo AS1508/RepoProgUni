@@ -9,9 +9,9 @@ struct datos{
 };
 
 
-int leeyvalida();
-int busqueda();
-float valida();
+int leeyvalida(int, int);
+int busqueda(struct datos[], int, int);
+float valida(float);
 
 int main(){
     FILE *arch;
@@ -72,7 +72,32 @@ int main(){
     return 0;
 }
 
+int leeyvalida(int li, int ls){
+    int x;
+    do{
+        scanf("%d", &x);
 
+    }while(x<li || x>ls);
+    return x;
+}
+int busqueda(struct datos V[], int x, int cantidad){
+    int pos=-1, i=0;
+    while(pos!=-1 && i<cantidad){
+        if(V[i].numCuenta==x){
+            pos=x;
+        }else{
+            i++;
+        }
+    }
+    return pos;
+}
+float valida(float lim){
+    float x;
+    do{
+        scanf("%d", &x);
+    }while(x<=lim);
+    return x;
+}
 
 
 
