@@ -8,7 +8,7 @@ struct datos{
     float saldo;
 };
 
-
+void actualizar(struct datos[], int);
 int leeyvalida(int, int);
 int busqueda(struct datos[], int, int);
 float valida(float);
@@ -87,7 +87,7 @@ int busqueda(struct datos V[], int x, int cantidad){
             pos=x;
         }else{
             i++;
-        }
+        }   
     }
     return pos;
 }
@@ -98,9 +98,19 @@ float valida(float lim){
     }while(x<=lim);
     return x;
 }
-
-
-
+void actualizar(struct datos V[], int cantidad){
+    int i;
+    FILE *archivo;
+    archivo=fopen("saldante.dat", "wb");
+    if(archivo==NULL){
+        printf("Error");
+        exit(1);
+    }
+    for(i=0; i<cantidad; i++){
+        fwrite(&V[i], sizeof(struct datos), 1, archivo);
+    }
+    fclose(archivo);
+}
 
 /*
 Un Banco tiene un archivo secuencial SALDANTE ordenado por 
