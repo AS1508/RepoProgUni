@@ -114,30 +114,15 @@ void Facturacion(int vC[], int limite, int M[][12], int tri[]){
         
         M[pos][mes-1]=imp;
 
-        switch (mes){
-        case 1:
-        case 2:
-        case 3:
-             tri[0]+=imp;
-            break;
-        case 4:
-        case 5:
-        case 6:
-             tri[1]+=imp;
-            break;
-        case 7:
-        case 8:
-        case 9:
-             tri[2]+=imp;
-            break;
-        case 10:
-        case 11:
-        case 12:
-             tri[3]+=imp;
-            break;
+        if(mes>=1 && mes<=3){
+            tri[0]+=imp;
+        }else if(mes>=4 && mes<=6){
+            tri[1]+=imp;
+        }else if(mes>=7 && mes<=9){
+            tri[2]+=imp;
+        }else{
+            tri[3]+=imp;
         }
-
-
         i++;
         printf("mes: ");
         mes=LeeYValida(1, 12, -1);
@@ -228,11 +213,3 @@ void ListaImporteServicio(int agua, int gas, int luz){
             }
     }
 }
-
-
-/*
-
-    mEnergetica(guarda importes)/codigos(para busqueda)
-
-
-*/
