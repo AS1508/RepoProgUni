@@ -25,7 +25,7 @@ int main(){
     }
     while(i<cantidad){
         fread(&precios[i], sizeof(struct Producto),1, archivo);
-        printf("%d | %.2f | %s\n", precios->codigo, precios->precio, precios->descripcion);
+        printf("%d | %.2f | %s\n", precios[i].codigo, precios[i].precio, precios[i].descripcion);
         i++;
     }
     fclose(archivo);
