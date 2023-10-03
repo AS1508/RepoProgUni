@@ -3,6 +3,7 @@
     "editor.fontSize": 22,
     "editor.renderWhitespace": "all",
     "files.associations": {
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "stdlib.h": "c"
     }
 }

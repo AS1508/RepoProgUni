@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 struct datos{
     int dni;
@@ -7,7 +8,7 @@ struct datos{
     int n2;
     float prom;
 };
-
+void Lectura();
 //volver a repasar esto (importante)
 
 int main(){
@@ -17,7 +18,7 @@ int main(){
     //apertura de archivo
     arch=fopen("alumnos.dat", "wb");
 
-    if(arch=="NULL"){
+    if(arch==NULL){
         printf("Error");
         exit(1);
     }
@@ -28,10 +29,15 @@ int main(){
         printf("nombre: ");
         fflush(stdin);
         gets(aux.nombreap);
-        printf("Notas : ");
-        scanf("%d %d", aux.n1, aux.n2);
-        aux.prom=(aux.n1 + aux.n2)/2.0;
+        printf("1°Nota : ");
+        scanf("%d", &aux.n1);
+        printf("2°Notas : ");
+        scanf("%d", &aux.n2);
+        aux.prom=(aux.n1 + aux.n2)/2;
         fwrite(&aux, sizeof(aux), 1, arch);
+        
+        printf("DNI: ");
+        scanf("%d", &aux.dni);
     }
     //Cierre de archivo
     fclose(arch);
@@ -40,16 +46,17 @@ int main(){
 }
 void Lectura(){
     struct datos aux;
-    FILE * arch;
+   FILE * arch;
     arch=fopen("alumnos.dat", "rb");
-    if(arch=="NULL"){
+    if(arch==NULL){
         printf("Error");
         exit(1);
     }
-    printf("dni\t|\tnombre\t|\tPrimer nota\t|\tSegunda Nota\t|\tPromedio");
+    printf("dni\t|\tnombre\t|\tPrimer nota\t|\tSegunda Nota\t|\tPromedio\n");
     while(!feof(arch)){
-        printf("%d\t|\t%s\t|\t%d\t|\t%d\t|\t%.2f", aux.dni,aux.nombreap,aux.n1,aux.n2,aux.prom);
         fread(&aux, sizeof(aux),1,arch);
+        printf("%d\t|\t%s\t|\t%d\t\t|\t%d\t\t|\t%.2f\n", aux.dni,aux.nombreap,aux.n1,aux.n2,aux.prom);
+        
     }
     fclose(arch);
 }
