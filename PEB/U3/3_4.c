@@ -53,7 +53,7 @@ int ArchivoPrueba(){
     return cant;
 }
 void Actual(int cantidad, struct Producto precios[]){
-    int i;
+    int i=0;
     FILE*archivo;
     
     archivo=fopen("precios.dat", "rb");
@@ -73,26 +73,33 @@ void Actual(int cantidad, struct Producto precios[]){
 }
 void Actualizacion(int cantidad, float actualizacion, struct Producto precios[]){
     int i=0;
-
     FILE*archivo;
+
     archivo=fopen("preciosActualizado.dat", "wb");
     if(archivo==NULL){
         printf("Error.");
         exit(1);
     }
-    //for(i=0; i<cantidad; i++)
-    
     printf("\n\nActualizacion (Porcentaje): ");
     scanf("%f", &actualizacion);
     actualizacion*=0.01;
-
+    printf("%.2f", actualizacion);
     for(i=0; i<30; i++)
         printf("_");
 
     while(i<cantidad){
-        fwrite(&precios[i], sizeof(struct Producto), 1, archivo);
         precios[i].precio*=actualizacion;
+        fwrite(&precios[i], sizeof(struct Producto), 1, archivo);
         i++;
+    }
+    fclose(archivo);
+
+    //-------------//
+    
+    archivo=fopen("preciosActualizado.dat", "rb");
+    if(archivo==NULL){
+        printf("Error.");
+        exit(1);
     }
     while(i<cantidad){
         fread(&precios[i], sizeof(struct Producto), 1, archivo);
