@@ -82,20 +82,19 @@ void Actualizacion(int cantidad, float actualizacion, struct Producto precios[])
     }
     printf("\n\nActualizacion (Porcentaje): ");
     scanf("%f", &actualizacion);
-    actualizacion*=0.01;
     printf("%.2f", actualizacion);
-    for(i=0; i<30; i++)
+    for(int i=0; i<30; i++)
         printf("_");
 
     while(i<cantidad){
-        precios[i].precio*=actualizacion;
+        precios[i].precio+=(actualizacion/10);
         fwrite(&precios[i], sizeof(struct Producto), 1, archivo);
         i++;
     }
     fclose(archivo);
-
+    i=0;
     //-------------//
-    
+    printf("Precio actualizado\n");
     archivo=fopen("preciosActualizado.dat", "rb");
     if(archivo==NULL){
         printf("Error.");
