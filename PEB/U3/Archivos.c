@@ -19,18 +19,18 @@ struct Venta{
     int cantVend;
 };
 
-//int Busqueda(struct Envase[], int, int);
+int Busqueda(struct Envase[], char[], int);
 void LeeYValidaCodigo(char[], int, char);
 int Lee(int, int);
 int CargarInventario(struct Envase []);
-int VentaEnvases(struct Venta[]);
+int VentaEnvases(struct Venta[], struct Envase[], int);
 //void MostrarInforme();
 
 int main(){
     FILE*archivo;
     int cantidadEnvases, cantidadVentas;
     struct Envase envases[100];
-    struct Venta ventas[];
+    struct Venta ventas[100], aux;
 
     //Carga de Inventario
     cantidadEnvases = CargarInventario(envases);
@@ -62,7 +62,7 @@ int main(){
 
     //Ventas
     
-    cantidadVentas = VentaEnvases(ventas);
+    cantidadVentas = VentaEnvases(ventas, envases, cantidadEnvases);
     archivo=fopen(FILE_ENVASE_VIDRIO_VENTA, "wb");
     if(archivo==NULL){
         printf("Error");
@@ -107,19 +107,42 @@ int CargarInventario(struct Envase envases[]){
     return cantidad;
 }
 
-int VentaEnvases(struct Venta ventas[]){
+int VentaEnvases(struct Venta ventas[], struct Envase envsases[], int cantidadEnvases){
     char codEnv[10];
-    int color, cantidad=0;
+    int color, cantidad=0, i=0, pos;
+   /* FILE*archivo;
+    archivo=fopen(FILE_ENVASE, "wb");
+    if(archivo == NULL){
+        printf("Error");
+        exit(1);
+    }*/
 
     printf("Codigo de envase(0 para salir): ");
-    LeeYValidaCodigo(codEnv, 10, '0');
-    while(strlen(codEnv)<=10 && codEnv[0]!='0'){
-        printf("Toy adentro");
+    do{
+        LeeYValidaCodigo(codEnv, 9, '0');
+        pos=Busqueda(envsases, codEnv, cantidadEnvases);
+    }while(pos!=-1);
+
+    while(pos!=-1 && codEnv[0]!='0'){
+        printf("Color: ");
+        color=Lee(1, 5);
+        
+        printf("Cantidad: ");
+        do{
+            scanf("%d", &cantidad);
+        }while(cantidad<=0);
+
+        strcpy(ventas[i].codEnv, codEnv);
+        ventas[i].color=color;
+        ventas[i].cantVend = cantidad;
+
+        i++;
+        printf("Codigo de envase(0 para salir): ");
+        LeeYValidaCodigo(codEnv, 9, '0');
+        pos=Busqueda(envsases, codEnv, cantidadEnvases);
     }
-    system("pause");
-    return cantidad;
-    //printf("Color: ");
-      //  envases[cantidad].codMat=Lee(1, 5);
+
+    return i;
 }
 void LeeYValidaCodigo(char codEnv[], int max, char fin){
     do{
@@ -133,4 +156,15 @@ int Lee(int li, int ls){
         scanf("%d", &numero);
     }while(numero<li || numero>ls);
     return numero;
+}
+int Busqueda(struct Envase DB[], char x[], int cantidad){
+    int i=0, pos=-1;
+    while (i<cantidad && pos==-1){
+        if(strcmp(DB[i].codEnv, x)==0){
+            pos=i;
+        }else{
+            i++;
+        }
+    }
+    return pos;
 }
