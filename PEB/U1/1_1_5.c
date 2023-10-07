@@ -1,99 +1,74 @@
 #include<stdio.h>
+#include<stdlib.h>
 
-int CargaLibros(int[], int);
-int validacion(int, int, int);
-int busqueda(int[], int, int);
-void Ventas(int[], int, int[][7]);
-void Listado(int[][7], int, int[]);
+int CargaLibros(int[] int);
+void Venta();
+void Listados();
+int Busqueda(int[], int, int);
+int Lee(int, int);
+int Valida(int, int, int);
+void Ordena();
+
 
 int main(){
-    int libros[100], l=0, venta[100][7]={{0}};
+    int ventas[100][7], libros[100], cantidad;
     
-    l=CargaLibros(libros, 100);
-    Ventas(libros, l, venta);
-    Listado(venta, l, libros);
-    //MayoresVentas() //comparacion como en el 1.1.3 (hacer)
-    //NoVentas() //recorrer por fila la matriz y sumar las cantidades (hacer)
+    //Carga de Libros
+    cantidad = CargaLibros(libros, 100);
+    printf("tamos");
+    exit(1);
+    //Venta
+    Venta(ventas, cantidad, libros);
+    //Listados (Outputs)
+    Listados(ventas, cantidad);
+    return 0;
 }
-int CargaLibros(int vL[], int nL){
-    int codlib, i=0, x;
-        codlib=validacion(1000, 9999, 0);   //hacer
-    while(codlib!=0 && i<100){
-        x=busqueda(vL, codlib, i);  //hacer
-        if(x==-1){
-            vL[i]=codlib;
-            i++;
-        }else{
-            printf("libro duplicado");
-        }
-        codlib=validacion(1000, 9999, 0);
+int CargaLibros(int libro[], int maximo){
+    int codigo, pos, i;
+
+    printf("codigo: ");
+    codigos=Valida(100, 999);
+    
+    while(codigo!=0){
+        libro[i] = codigo;
+        if(codigo){printf("\n\tCarga Exitosa\n");}
+        i++;
+        do{
+            printf("codigo: ");
+            codigos =Valida(100, 999);
+            pos=Busqueda(libros, pos, maximo);
+            if(pos==-1){printf("Libros existente.\n")}
+        }while(pos!=-1)
     }
     return i;
 }
-void Ventas(int vL[], int cL, int vV[][7]){
-    int libro, lpos, suc, cant=0;
-    printf("codigo de libro:");
-    scanf("%d", &libro); 
-    //pedido de datos
-    while(libro!=0){
-        lpos=busqueda(vL, libro, cL);    
-        if(lpos!=-1){
-            do{
-            printf("sucursal: ");
-            scanf("%d", &suc);
-            suc=(suc/10)-1;  
-            }while(suc<0 || suc>6);
-            printf("cantidad:");
-            do{
-                scanf("%d", &cant); 
-            }while(cant<=0);
-            vV[lpos][suc]=cant;
-        }else
-            printf("codigo erroneo");
+int Valida(int limInferior, int limSuperior){
+    int numero;
+    do{scanf("%d", &numero);}while(numero<limInferior || numero>limSuperior);
+    return numero;
+}
+int Buqueda(int DB[], int x, int cantidad){
+    int i=0, pos=-1;
+    while(i<cantidad && pos==-1){
+        if(DB[i]==x)
+            pos = i;
+        else
+            i++;
+    }
+    return pos;
+}/*
+void Venta(int venta[][7], int cantidad, int libros[]){
+    int codigos, cantidad, sucursal;
+    
+    printf("codigo: ");
+    codigos=Valida(100, 999);
+    while(codigos!=0){
+        printf("Sucursal: ");
+        sucursal=ValidaSucursal(10, 20, 30, 40, 50, 60, 70);
+        printf("Cantidad: ");
+        do{scanf("%d", &cantidad);}while(cantidad<0);
+        
+        Venta[codigos][sucursal] += cantidad;
 
-        scanf("%d", &libro);
     }
-}
-void Listado(int vV[][7], int l, int vL[]){
-    printf("libro/Sucursal\t10\t20");
-    //muestra de codigos de libros
-    for(int i=0; i<l;i++){
-        printf("&d", vL[i]);
-        //muestra de matriz
-        for(int j=0; j<7; j++){
-            printf("%d\t", vV[i][j]);
-        }
-        printf("\n");
-    }
-}
-/*
-//suma por columna
-for(j){
-    for(i){
-        vsuc[j]=m[i][j]
-    }
-}
-//busqueda de maximo
-for(i){
-    if(i==0 || vsuc[i]){
-        max=vsuc[]
-    }
-    printf(suc con mayores);
-}
-//muestra de maximo 
-for(i){
-    if(max==vsuc[i]){
-        printf(%d, (i+1)*10)
-    }
-}
-//sumador
-for(i){
-    sum=0
-    for(j){
-        sum+=m[i][j]
-    }
-    if(sum==0){ //para encontrar las sucursales que no venideron nada
-        printf(%d\n, vL[i])
-    }
-}
-*/
+}*/
