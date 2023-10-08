@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int CargaLibros(int[] int);
-void Venta();
+int CargaLibros(int[], int);
+void Venta(int[], int, int[]);
 void Listados();
 int Busqueda(int[], int, int);
 int Lee(int, int);
@@ -23,40 +23,39 @@ int main(){
     Listados(ventas, cantidad);
     return 0;
 }
-int CargaLibros(int libro[], int maximo){
+int CargaLibros(int libros[], int maximo){
     int codigo, pos, i;
 
     printf("codigo: ");
-    codigos=Valida(100, 999);
+    codigo = Valida(100, 999, 0);
     
     while(codigo!=0){
-        libro[i] = codigo;
+        libros[i] = codigo;
         if(codigo){printf("\n\tCarga Exitosa\n");}
         i++;
         do{
             printf("codigo: ");
-            codigos =Valida(100, 999);
+            codigo = Valida(100, 999, 0);
             pos=Busqueda(libros, pos, maximo);
-            if(pos==-1){printf("Libros existente.\n")}
-        }while(pos!=-1)
+            if(pos==-1){printf("Libros existente.\n");}
+        }while(pos!=-1);
     }
     return i;
 }
-int Valida(int limInferior, int limSuperior){
+int Valida(int limInferior, int limSuperior, int fin){
     int numero;
-    do{scanf("%d", &numero);}while(numero<limInferior || numero>limSuperior);
+    do{scanf("%d", &numero);}while((numero<limInferior || numero>limSuperior) && numero!=fin);
     return numero;
 }
 int Buqueda(int DB[], int x, int cantidad){
     int i=0, pos=-1;
     while(i<cantidad && pos==-1){
-        if(DB[i]==x)
-            pos = i;
-        else
-            i++;
+        if(DB[i]==x){pos = i;}
+        else{i++;}
     }
     return pos;
-}/*
+}
+/*
 void Venta(int venta[][7], int cantidad, int libros[]){
     int codigos, cantidad, sucursal;
     
