@@ -105,6 +105,7 @@ void Ordena(int sucursales[], int cantidad, int ventas[][7]){
     for(int i=1; i<=cantidad; i++){if(max==sucursales[i]){printf("_S%d\t|%d|", (i*10), sucursales[i]);}}
     printf("\n\tLibros que no se vendieron\n");
     for(int i=0; i<cantidad; i++){
+        sum=0;
         for(int j=0; j<cantidad; j++){sum+=ventas[i][j];}
         if(sum==0){printf("|S%d| ", sucursales[i]);}
     }
