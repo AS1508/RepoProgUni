@@ -12,7 +12,7 @@ void Ordena(int[], int, int[][7], int[]);
 
 
 int main(){
-    int ventas[100][7]={{0}}, libros[100]={0}, cantidad, ventaxsucursal[7]={0};
+    int ventas[100][7]={{0}}, libros[100]=0, cantidad, ventaxsucursal[7]={0};
     
     //Carga de Libros
     cantidad = CargaLibros(libros, 100);
@@ -107,6 +107,6 @@ void Ordena(int sucursales[], int cantidad, int ventas[][7], int codigos[]){
     for(int i=0; i<cantidad; i++){
         sum=0;
         for(int j=0; j<cantidad; j++){sum+=ventas[i][j];}
-        if(sum==0){printf("|S%d| ", codigos[i]);}
+        if(sum==0){printf("|%d| ", codigos[i]);}
     }
 }
