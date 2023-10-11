@@ -8,7 +8,7 @@ int Busqueda(int[], int, int);
 int Lee(int, int);
 int Valida(int, int, int);
 int ValidaSucursal(int, int, int, int, int, int, int);
-void Ordena(int[], int, int[][7]);
+void Ordena(int[], int, int[][7], int[]);
 
 
 int main(){
@@ -23,7 +23,7 @@ int main(){
     //Listados (Outputs)
     Listados(ventas, cantidad, libros);
     //Outputs Secundarios
-    Ordena(ventaxsucursal, 7, ventas);
+    Ordena(ventaxsucursal, 7, ventas, libros);
     return 0;
 }
 int CargaLibros(int libros[], int maximo){
@@ -97,7 +97,7 @@ void Listados(int ventas[][7], int maximo, int codigos[]){
         printf("\n");
     }
 }
-void Ordena(int sucursales[], int cantidad, int ventas[][7]){
+void Ordena(int sucursales[], int cantidad, int ventas[][7], int codigos[]){
     int max=0, sum;
 
     for(int i=0; i<cantidad; i++){if(sucursales[i]>=max){max=sucursales[i];}}
@@ -107,6 +107,6 @@ void Ordena(int sucursales[], int cantidad, int ventas[][7]){
     for(int i=0; i<cantidad; i++){
         sum=0;
         for(int j=0; j<cantidad; j++){sum+=ventas[i][j];}
-        if(sum==0){printf("|S%d| ", sucursales[i]);}
+        if(sum==0){printf("|S%d| ", codigos[i]);}
     }
 }
