@@ -12,7 +12,7 @@ void Ordena(int[], int, int[][7], int[]);
 
 
 int main(){
-    int ventas[100][7]={{0}}, libros[100]=0, cantidad, ventaxsucursal[7]={0};
+    int ventas[100][7]={{0}}, libros[100], cantidad, ventaxsucursal[7]={0};
     
     //Carga de Libros
     cantidad = CargaLibros(libros, 100);
@@ -23,7 +23,7 @@ int main(){
     //Listados (Outputs)
     Listados(ventas, cantidad, libros);
     //Outputs Secundarios
-    Ordena(ventaxsucursal, 7, ventas, libros);
+    Ordena(ventaxsucursal, cantidad, ventas, libros);
     return 0;
 }
 int CargaLibros(int libros[], int maximo){
@@ -89,10 +89,10 @@ int ValidaSucursal(int s1, int s2, int s3, int s4, int s5, int s6, int s7){
 void Listados(int ventas[][7], int maximo, int codigos[]){
     printf("Libro/sucursal\t");
     for(int i=1; i<=7; i++)
-        printf("%2d\t", i*10);
+        printf("S%2d\t", i*10);
     printf("\n");
     for(int i=0; i<maximo; i++){
-        printf("S%d\t\t\t", codigos[i]);
+        printf("L%d\t\t\t", codigos[i]);
         for(int j=0; j<7;j++){printf("%2d\t", ventas[i][j]);}
         printf("\n");
     }
@@ -100,13 +100,13 @@ void Listados(int ventas[][7], int maximo, int codigos[]){
 void Ordena(int sucursales[], int cantidad, int ventas[][7], int codigos[]){
     int max=0, sum;
 
-    for(int i=0; i<cantidad; i++){if(sucursales[i]>=max){max=sucursales[i];}}
+    for(int i=0; i<7; i++){if(sucursales[i]>=max){max=sucursales[i];}}
     printf("\n\tMaximos Vendeores\n");
-    for(int i=1; i<=cantidad; i++){if(max==sucursales[i]){printf("_S%d\t|%d|", (i*10), sucursales[i]);}}
+    for(int i=0; i<7; i++){if(max==sucursales[i]){printf("_S%d\t|%d|", (i+1)*10, sucursales[i]);}}
     printf("\n\tLibros que no se vendieron\n");
     for(int i=0; i<cantidad; i++){
         sum=0;
-        for(int j=0; j<cantidad; j++){sum+=ventas[i][j];}
+        for(int j=0; j<=cantidad; j++){sum+=ventas[i][j];}
         if(sum==0){printf("|%d| ", codigos[i]);}
     }
 }
