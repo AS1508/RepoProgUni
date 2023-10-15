@@ -1,21 +1,24 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#define ARCHIVO "Empleados.dat" //*
+#define ARCHIVO "Rating.dat" //*
 
-struct generadorDeArchivo
-{   //*
-    char dato1[50];
-    int dato2;
-    //*
+struct generadorDeArchivo{
+   //*
+    int canal;
+    char programa[35];
+    float rating;
+   //*
 };
 
 int main(){
     FILE*archivo;
-    struct generadorDeArchivo aux[]={   //*
-        {"Sebastian", 1},
-        {"Ivan", 1},
-        {"Magali", 3},
+    struct generadorDeArchivo aux[]={
+    //*
+        {10, "AAA", 5.5},
+        {20, "BBBBB", 200.1},
+        {30, "CC", 300.1},
+    //*
     };
     int cantidad, i=0;
 
@@ -34,7 +37,7 @@ int main(){
     fclose(archivo);
 
     //Testing
-
+/*
     archivo=fopen(ARCHIVO, "rb");
     if(archivo==NULL){exit(1);}
     i=0;
@@ -44,6 +47,6 @@ int main(){
         i++;
     }
     fclose(archivo);
-
+*/
     return 0;
 }
