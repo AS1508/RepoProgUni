@@ -25,7 +25,10 @@ int main(){
     archivo=fopen(F_RATING, "rb");
     archi2=fopen(F_PROMEDIO, "wb");
 
-    if(archi2==NULL || archivo==NULL){printf("mefui");exit(1);}
+    if(archi2==NULL || archivo==NULL){
+        printf("mefui");
+        exit(1);
+    }
 
     fread(&rating, sizeof(struct Canales),1, archivo);
     while(!feof(archivo)){
