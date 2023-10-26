@@ -3,12 +3,12 @@
 #include<string.h>
 #include<conio.h>
 #define F_LLAMADAS "Llamadas.dat"
-#define F_COSTOS "Costos.dat"
+/*#define F_COSTOS "Costos.dat"
 #define F_GASTOS "Gastos.dat"
 #define F_SECTOR "Sector.dat"
-
+*/
 struct Llamadas{
-    char sector[35];
+    char sector[15];
     int duracion;
     int tipo;
 };
@@ -33,7 +33,7 @@ int main(){
     FILE*archivoLlamada, *archivoGasto, *archivoCostos, *archivoSector;
     int duracionLlamada=0, contadorT1=0, contadorT2=0, contadorT3=0;
     struct Llamadas llamadas;
-    struct Costos valor;
+    //struct Costos valor;
     char sectorAnterior[35];
     
     archivoLlamada=fopen(F_LLAMADAS, "rb");
@@ -60,7 +60,7 @@ int main(){
             if(llamadas.tipo==3)
                 contadorT3++;
             duracionLlamada+=llamadas.duracion;
-            printf("\n\t%s\t%d\t%d", llamadas.sector, llamadas.tipo, duracionLlamada);
+            printf("\n\t%c \t%d\t%d", llamadas.sector, llamadas.tipo, duracionLlamada);
 
             fread(&llamadas, sizeof(struct Llamadas),1, archivoLlamada);
         }

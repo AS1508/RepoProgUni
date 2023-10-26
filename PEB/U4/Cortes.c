@@ -10,16 +10,17 @@ struct Persona
 };
 
 int main(){
-    int codigoAnterior, registro, cantidadDeEmpleados=0;
+    int codigoAnterior, registro, cantidadDeEmpleados=0, x;
     struct Persona persona;
+    FILE*archivo;
 
     archivo=fopen(F_EMPLEADOS, "rb");
     if(archivo==NULL){
         printf("Error.");
         exit(1);
     }
-    fread(&persona, sizeof(struct Persona), 1, archivo);
     printf("\n\tEmpleado | Categoria");
+    fread(&persona, sizeof(struct Persona), 1, archivo);
     while(!feof(archivo)){
         codigoAnterior = persona.categoria;
         x=0;

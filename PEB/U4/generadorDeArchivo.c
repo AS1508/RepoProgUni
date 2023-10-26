@@ -14,7 +14,7 @@ struct generadorDeArchivo{
 int main(){
     FILE*archivo;
     struct generadorDeArchivo aux[]={
-    //*
+    //* 
         {"a", 300, 2},
         {"aa", 30, 1},
         {"b",20, 2},
