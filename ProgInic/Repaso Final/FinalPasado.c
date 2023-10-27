@@ -9,21 +9,20 @@ int Carga(int[][MES], int, int, int, char, int[]);
 int Busqueda(int[], int, int);
 int LeeYValida(int, int, int);
 int Ingreso(int, int);
-void Resumen(int[][MES], int);
+void Resumen(int[][MES]);
 void Objetivo(int[]);
 void VentaTrimestral(int[][MES]);
-
 
 int main(){
     int venta[SUCURSALES][MES], sucursal, mes, cantidad=0, cantidadVentas=0, objetivoMesual[MES]={0};
     char objetivo;
 
     cantidadVentas = Carga(venta, sucursal, mes, cantidad, objetivo, objetivoMesual);
-    
-    Resumen(venta, cantidadVentas);
+
+    Resumen(venta);
     Objetivo(objetivoMesual);
     VentaTrimestral(venta);
-    
+
     return 0; 
 }
 
@@ -80,4 +79,17 @@ void Resumen(int ventas[][MES], int cantidad){
         printf("\n");
     }
 }
-void Objetivo( )//Seguir
+void Objetivo(int objetivos[]){
+    printf("\n\tObjetivos\n");
+    for(int i=0; i<MES; i++)
+        if(objetivos[i]<0)
+            printf("mes %d | sucursales: %d \n", i+1, objetivos[i]);
+}
+void VentaTrimestral(int ventas[][MES]){
+    int suma=0;
+    for(int i=0; i<SUCURSALES; i++)
+        for(int j=0; j<TRIMESTRE; j++)
+            suma+=ventas[i][j];
+    
+    printf("\nPrimer Trimestre: %d ventas", suma);
+}
