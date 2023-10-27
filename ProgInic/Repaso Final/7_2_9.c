@@ -16,7 +16,7 @@ int main(){
     cantidadVentas = Carga(semana, vendedor, dia, cantidad, ventaFinde);
 
     Resumen(semana);
-    printf("\nObjetivos\n")
+    printf("\nObjetivos\n");
     for(int i=0; i<VENDEDORES; i++)
         for(int j=0; j<SEMANA; j++)
             if(semana[i][j]<15)
@@ -29,7 +29,7 @@ int main(){
 int Carga(int venta[][SEMANA], int vendedor, int dia, int cantidad, int ventaFinde[]){
     int cantidadVentas=0;
 
-    printf(\tVenta\n\n-vendedor: );
+    printf("\tVenta\n\n-vendedor: ");
     vendedor=LeeYValida(99, 500, 0);
     while(vendedor!=0){
         printf("\n-dia: ");
@@ -42,7 +42,7 @@ int Carga(int venta[][SEMANA], int vendedor, int dia, int cantidad, int ventaFin
         cantidadVentas++;
         printf("\n\tVENTA COMPLETADA\n\n");
         system("pause");
-        printf(\tVenta\n\n-vendedor: );
+        printf("\tVenta\n\n-vendedor: ");
         vendedor=LeeYValida(99, 500, 0);
     }
     return cantidadVentas;
@@ -65,7 +65,7 @@ void Resumen(int ventas[][SEMANA]){
     for(int i=0; i<VENDEDORES; i++){
         printf("V%d", i*100);
         for(int j=0; j<SEMANA; j++)
-            printf("\t%d", ventas[i][j]);
+            printf("\n\t%d", ventas[i][j]);
         printf("\n");
     }
 }
