@@ -15,7 +15,7 @@ int main(){
     int fila, columna, asientosDisponibles, asientosOcupados, estado;
 
     Carga(butacas);
-    printf("\tSistema de reserva\n");
+    printf("\tSistema de reserva\n\n");
     Reservas(butacas);
     do{
         printf("\nReserva\n-Fila: ");
@@ -27,16 +27,18 @@ int main(){
         scanf("%d", &columna);
         estado=Busqueda(butacas, fila, columna);
         if(estado == 1){
-            printf("asiento ocupado");
+            printf("ASIENTO OCUPADO\n\n");
             asientosOcupados++;
+            system("pause");
         }else{
             Actualizar(butacas, fila, columna);
             asientosDisponibles++;
-            printf("\tRESERVA COMPLETADA\n\n");
+            printf("\tRESERVA COMPLETADA\n\nPresiona cualquier tecla para continuar...");
+            system("pause");
         }
 
         system("cls");
-        printf("\tSistema de reserva\n");
+        printf("\tSistema de reserva\n\n");
         Reservas(butacas);
         do{
             printf("\nReserva\n-Fila: ");
@@ -47,7 +49,7 @@ int main(){
     }
     printf("hasta ahora funko");
     exit(1);
-    //FinalPrograma(butacas, asientosOcupados, asienstosDisponibles);
+    //FinalPrograma(butacas, asientosOcupados, asienstosDisponibles); //terminar
     return 0;
 }
 
@@ -59,26 +61,50 @@ void Carga(char butacas[][C]){
 void Reservas(char butacas[][C]){
     int aux;
     for(int i=0; i<C; i++){
-        if(i<5){
+        if(i<4){
             aux=8;
             printf("\t C%d", aux-(2*i));
+        }else if(i==4){
+            printf("\t C1");
         }else{
             aux=1;
-            printf("\t  C%d", aux+(2*(i-5)));
+            printf("\t  C%d", aux+(2*(i-4)));
         }
     }
     for(int f=0; f<F; f++){
-        //printf("F%1") (Seguir)
+        printf("\nF%d", f+1);
         for(int c=0; c<C; c++){
-            printf("\t%c", f+1, butacas[f][c]);
+            printf("\t%c", butacas[f][c]);
         }
         printf("\n");
     }
 }
 int Busqueda(char Butaca[][C], int filaBuscada, int columnaBuscada){
     int estado=0;
-    if(Butaca[filaBuscada][columnaBuscada] == 'R'){estado=1;}
-
+    if(Butaca[filaBuscada-1][columnaBuscada-1] == 'R'){
+        printf("Entro");
+        estado=1;
+    }
     return estado;
 }
-void Actualizar(char butacas[][C], int fila, int columna){butacas[fila][columna]=='R';}
+void Actualizar(char butacas[][C], int fila, int columna){
+    if(columna==1){
+        butacas[fila-1][4]='R';
+    }else if(columna==2){
+        butacas[fila-1][3]='R';
+    }else if(columna==3){
+        butacas[fila-1][5]='R';
+    }else if(columna==4){                                           
+        butacas[fila-1][2]='R';
+    }else if(columna==5){
+        butacas[fila-1][6]='R';
+    }else if(columna==6){
+        butacas[fila-1][1]='R';
+    }else if(columna==7){
+        butacas[fila-1][7]='R';
+    }else if(columna==8){
+        butacas[fila-1][0]='R';
+    }else if(columna==9){
+        butacas[fila-1][8]='R';
+    }   
+}
