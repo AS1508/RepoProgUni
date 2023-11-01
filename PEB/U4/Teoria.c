@@ -21,6 +21,7 @@ int main(){
 
     contTotal=0;
     fread(&per, sizeof(struct PERSONA),1, archivo);
+    printf("test1");
     while(!feof(archivo)){
         printf("Test");
         antSecFab=per.nSecFab;
