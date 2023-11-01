@@ -2,8 +2,8 @@
 #include<stdlib.h>
 #include<conio.h>
 #include<string.h>
-#define F_RATING "RATING.dat"
-#define F_PROMEDIO "PROMEDIO.dat"
+#define F_RATING "Rating.dat"
+#define F_PROMEDIO "Promedio.dat"
 
 struct Canales{
     int canal;
