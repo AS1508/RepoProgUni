@@ -3,11 +3,11 @@
 #include<string.h>
  
 struct DATOS{
-    int nLegajo;
-    char ayp[26];
-    int nanio;
-    int nSecFa;
-    float rSueldo;
+    int a;
+    char b[26];
+    int c;
+    int d;
+    float e;
 };
  
 int main(){
@@ -16,13 +16,13 @@ int main(){
     struct DATOS d;
     archivo=fopen("Empleados.dat", "rb");
     if(archivo==NULL){printf("chau");exit(1);}
-    fread(&d, sizeof(struct DATOS),1, archivo);
-    printf("%d | %s | %d | %d | %.2f ", d.nLegajo, d.ayp, d.nanio, d.nSecFa, d.rSueldo);
-    while (i<5)
+    //fread(&d, sizeof(struct DATOS),1, archivo);
+    //printf("%d | %s | %d | %d | %.2f ", d.nLegajo, d.ayp, d.nanio, d.nSecFa, d.rSueldo);
+    while (!feof(archivo))
     {
-        i++;
-        printf("%d | %s | %d | %d | %.2f ", d.nLegajo, d.ayp, d.nanio, d.nSecFa, d.rSueldo);
         fread(&d, sizeof(struct DATOS),1, archivo);
+        printf("%d | %s | %d | %d | %.2f \n", d.a, d.b, d.c, d.d, d.e);
+        i++;
     }
     fclose(archivo);
     return 0;
