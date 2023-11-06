@@ -50,7 +50,7 @@ int main(){
                 strcpy(contacto.nombre, nombre);
                 fseek(archivo, sizeof(struct AGENDA), SEEK_CUR);
                 fwrite(&contacto, sizeof(struct AGENDA),1, archivo);
-                printf("\n\tGUARDADO\n\n")
+                printf("\n\tGUARDADO\n\n");
                 fclose(archivo);
             }
         }else if(op==3){
@@ -81,7 +81,7 @@ void eliminarRegistro(char nombre[]){
     FILE*archivo, *temporal;
     struct AGENDA contacto;
     int i=0;
-    archivo=freopen(F_AGENDA, "rb");
+    archivo=fopen(F_AGENDA, "rb");
     temporal=fopen(F_TEMPORAL, "wb");
     if(archivo == NULL || temporal == NULL){printf("chau"); exit(1);}
     fread(&contacto, sizeof(struct AGENDA),1, archivo);
