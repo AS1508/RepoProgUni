@@ -5,52 +5,62 @@
 #define F_RATING "Rating.dat"
 #define F_PROMEDIO "Promedio.dat"
 
-struct Canales{
+struct canales{
     int canal;
-    float rating;
     char programa[20];
+    float rating;
 };
-struct Promedio{
+struct promedio{
     int canal;
     float promedio;
 };
  
 int main(){
     FILE *archivo, *archi2;
-    struct Canales rating;
-    struct Promedio promedio;
-    int cAnterior, contador=0, maxCanal;
-    float totalRating=0, maxRating=0;
+    struct canales canal;
+    struct promedio promedio;
+    int contador=0, cAnterior, canalMasVisto, ban=0;
+    float contadorRating=0, ratingMaximo;
 
     archivo=fopen(F_RATING, "rb");
     archi2=fopen(F_PROMEDIO, "wb");
 
-    if(archi2==NULL || archivo==NULL){printf("mefui");exit(1);}
-
-    fread(&rating, sizeof(struct Canales),1, archivo);
-    while(!feof(archivo)){
-        contador=0;
-        totalRating=0;
-        cAnterior=rating.canal;
-        while(!feof(archivo) && cAnterior==rating.canal){
+    if(archivo == NULL || archi2 == NULL){printf("chau\n");exit(1);}
+    
+    fread(&canal, sizeof(struct canales),1, archivo);
+    while (!feof(archivo)){
+        contador = 0;
+        contadorRating = 0;
+        cAnterior=canal.canal;
+        while(!feof(archivo) && cAnterior == canal.canal){
             contador++;
-            totalRating+=rating.rating;
-            fread(&rating, sizeof(struct Canales),1, archivo);
+            contadorRating+=canal.rating;
+            fread(&canal, sizeof(struct canales),1, archivo);
         }
-        if(totalRating>=maxRating){
-            maxCanal=cAnterior;
-            maxRating=totalRating;
-        }
-        if(totalRating<15){printf("Ratings menores a 15p\n C%d | %.2fp", cAnterior, totalRating);}
-        if(contador!=0){
-            promedio.canal=cAnterior;
-            promedio.promedio=totalRating/contador;
-            fwrite(&promedio, sizeof(struct Promedio),1, archi2);
-        }
-    }
-    printf("Canal Mas visto:\n\tC%d | %.2fp", maxCanal, maxRating);
 
+        if(contadorRating<15){
+            printf("Canales con menos de 15p de rating\n");
+            printf("C%d cuenta con R: %.2fp\n", cAnterior, contadorRating);
+        }
+
+        if(ban == 0 || (ratingMaximo < contadorRating)){
+            ban = 1;
+            canalMasVisto = canal.canal;
+            ratingMaximo = contadorRating;
+        }
+
+        if(contadorRating > 0){
+            promedio.canal = cAnterior;
+            promedio.promedio = contadorRating/contador;
+            printf("\n\n%d %.3f\n\n", promedio.canal, promedio.promedio);
+
+            fwrite(&promedio, sizeof(struct promedio),1,archi2);
+        }
+
+    }
+    printf("Canal mas visto: C%d | P:%.2fp", canalMasVisto, ratingMaximo);
     fclose(archivo);
     fclose(archi2);
+
     return 0;
 }

@@ -3,8 +3,11 @@
     "editor.fontSize": 18,
     "editor.renderWhitespace": "all",
     "files.associations": {
+        "*.excalidraw": "json",
+        "*.excalidrawlib": "json",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "random": "c"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "C_Cpp.autocompleteAddParentheses": true
