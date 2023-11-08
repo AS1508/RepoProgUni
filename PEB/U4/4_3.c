@@ -58,6 +58,12 @@ int main(){
         contadorDuracion1 = 0;
         contadorDuracion2 = 0;
         contadorDuracion3 = 0;
+
+        while (!feof(archivoLlamada)){
+            printf("%s | %d | %d \n", llamadas.sector, llamadas.tipo, llamadas.duracion);
+            fread(&llama, sizeof(struct Llamadas),1, archivoLlamada);
+        }
+
         while((!feof(archivoLlamada)) && (strcmp(sAnterior, llamadas.sector)==0)){
             if(llamadas.tipo == 1){contadorLlamada1++; contadorDuracion1+=llamadas.duracion;}
             if(llamadas.tipo == 2){contadorLlamada2++; contadorDuracion2+=llamadas.duracion;}
