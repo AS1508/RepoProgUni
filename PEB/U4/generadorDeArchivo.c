@@ -1,12 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#define ARCHIVO "Rating.dat" //*
+#define ARCHIVO "Costos.dat" //*
 
 struct generadorDeArchivo{
    //*
-    int a;
-    char b[20];
+    float a;
+    float b;
     float c;
    //*
 };
@@ -15,10 +15,7 @@ int main(){
     FILE*archivo;
     struct generadorDeArchivo aux[] = {
     //* 
-        {123, "aa", 123.12},
-        {123, "AA", 223.12},
-        {234, "bb", 4.12},
-        {435, "cc", 2323.12},
+        {10.5, 20.5, 15.5},
     //*
     }, aux2;
     int cantidad, i=0;
@@ -28,7 +25,7 @@ int main(){
         printf("Error.");
         exit(1);
     }
-    cantidad = 4;   //*
+    cantidad = 1;   //*
     while(i < cantidad){
         fwrite(&aux[i], sizeof(struct generadorDeArchivo),1, archivo); //Faltaba el [i]
         i++;
@@ -44,7 +41,7 @@ int main(){
     i=0;
     while(i<cantidad){
         fread(&aux2, sizeof(struct generadorDeArchivo),1, archivo);
-        printf("%d | %s | %.2f \n", aux2.a, aux2.b, aux2.c);
+        printf("%.2f | %.2f | %.2f \n", aux2.a, aux2.b, aux2.c);
         i++;
     }
     fclose(archivo);
