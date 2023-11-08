@@ -68,7 +68,7 @@ int main(){
         duracionSector = contadorDuracion1 + contadorDuracion2 + contadorDuracion3;
         printf("-Sector %s \n.tipo 1: %d llamadas\n.tipo 2: %d llamadas\n.tipo 3: %d llamadas\n", sAnterior, contadorLlamada1, contadorLlamada2, contadorLlamada3);
 
-        if(ban == 0 || maximaDuracion < duracionSector){
+        if(ban == 0 || duracionSector > maximaDuracion){
             ban = 1;
             strcpy(maximaSector, sAnterior);
             maximaDuracion = duracionSector;
