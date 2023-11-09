@@ -15,7 +15,7 @@ int main(){
     int codigo, bandera=0;
     char rta;
 
-    if(fopen(FILE_PRECIOS, "r+b")==NULL){printf("mefui");exit(1);}
+if((archivo = fopen(FILE_PRECIOS, "r+b")) == NULL){printf("mefui");exit(1);}
 
     printf("Codigo: ");
     scanf("%d", %codigo);
