@@ -29,7 +29,7 @@ struct Sector{
     float costo;
 };
 
-//void Listar();
+void Listar(struct Gastos);
 
 int main(){
     FILE *archivoLlamada, *archivoCostos, *archivoGastos, *archivoSector;
@@ -55,6 +55,10 @@ int main(){
     while (!feof(archivoLlamada)){
         contador = 0;
         strcpy(sAnterior, llamadas.sector);
+        strcpy(archivo, llamadas.sector);
+        strcat(archivo, DAT);
+        archivoGastos = fopen(archivo, "wb");
+        if(archivoGastos == NULL){printf("No se pudo crear el archivo del sector.\n");exit(1);}
         contadorLlamada1 = 0;
         contadorLlamada2 = 0;
         contadorLlamada3 = 0;
@@ -64,22 +68,39 @@ int main(){
 
         while((!feof(archivoLlamada)) && (strcmp(sAnterior, llamadas.sector)==0)){
             contador++;
-            if(llamadas.tipo == 1){contadorLlamada1++; contadorDuracion1+=llamadas.duracion;}
-            if(llamadas.tipo == 2){contadorLlamada2++; contadorDuracion2+=llamadas.duracion;}
-            if(llamadas.tipo == 3){contadorLlamada3++; contadorDuracion3+=llamadas.duracion;}
-            fread(&llamadas, sizeof(struct Llamadas),1, archivoLlamada);
+            if(llamadas.tipo == 1){
+                contadorLlamada1++;
+                contadorDuracion1+=llamadas.duracion;
 
-            //Hacerlo en una funcion, volver a abrirlos y contar desde ahi(creo)
-/*
-            if(contadorDuracion1>0){
-                sector.tipo = llamadas.tipo;
-                sector.duracion = llamadas.duracion;
-                sector.costo = llamadas.duracion * costo.local
-            }else if(contadorDuracion2>0){
-                sector.tipo = llamadas.tipo;
-                sector.duracion
+                if(contadorLlamada1>0){
+                    sector.tipo = llamadas.tipo;
+                    sector.duracion = llamadas.duracion;
+                    sector.costo = llamadas.duracion * costo.local;
+                }
             }
-*/
+            if(llamadas.tipo == 2){
+                contadorLlamada2++;
+                contadorDuracion2+=llamadas.duracion;
+
+                if(contadorDuracion2>0){
+                    sector.tipo = llamadas.tipo;
+                    sector.duracion = llamadas.duracion;
+                    sector.costo = llamadas.duracion * costo.largaDistancia;
+                }
+            }
+            if(llamadas.tipo == 3){
+                contadorLlamada3++;
+                contadorDuracion3+=llamadas.duracion;
+
+                if(contadorDuracion3>0){
+                    sector.tipo = llamadas.tipo;
+                    sector.duracion = llamadas.duracion;
+                    sector.costo = llamadas.duracion * costo.celular;
+                }
+            }
+
+            fwrite(&sector, sizeof(struct Gastos),1, archivoGastos);
+            fread(&llamadas, sizeof(struct Llamadas),1, archivoLlamada);
         }
 
             //Tiempo por Sector
@@ -102,17 +123,6 @@ int main(){
         fwrite(&resumen, sizeof(struct Gastos),1, archivoGastos);
 
         Listar(resumen);
-/*
-        if(duracionSector>0){
-            strcpy(archivo, sAnterior);
-            strcat(archivo, DAT);
-            for(int i=0; i<contadorLlamada1; i++){
-                sector.tipo = 1;
-                sector.duracion = contadorDuracion1;
-                sector.costo = costo.
-            }
-        }
-*/
     }
 
     fclose(archivoLlamada);
@@ -123,3 +133,16 @@ int main(){
 
     return 0;
 }
+
+
+            //Hacerlo en una funcion, volver a abrirlos y contar desde ahi(creo)
+/*
+            if(contadorDuracion1>0){
+                sector.tipo = llamadas.tipo;
+                sector.duracion = llamadas.duracion;
+                sector.costo = llamadas.duracion * costo.local
+            }else if(contadorDuracion2>0){
+                sector.tipo = llamadas.tipo;
+                sector.duracion
+            }
+*/
