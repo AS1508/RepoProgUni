@@ -50,7 +50,7 @@ int calcularCategoria(int diaIngreso, int mesIngreso, int añoIngreso, int diaAc
     if(diaFinal<0){mesFinal--;}
     if(mesFinal<0){añoFinal--;}
 
-    if(año>=0 && año<2){categoria=1;}else if(años>=2 && años<=5){categoria=2;}else if(años>=6 && años<10){categoria=3;}else if(años>=10){categoria=4;}
+if(año>=0 && año<2){categoria=1;}else if(años>=2 && años<=5){categoria=2;}else if(años>=6 && años<10){categoria=3;}else if(años>=10){categoria=4;}
 
     return categoria;
 }

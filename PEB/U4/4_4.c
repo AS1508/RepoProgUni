@@ -87,7 +87,7 @@ int main(){
 
     }
 
-    //iria el (e) pero tu vieja va a hacer el (e)
+    //deberia hacer el (e) pero tu vieja va a hacer el (e)
     OrdenarViajes(montosXtarifa, cantidad);
     /*
         for

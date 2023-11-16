@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
 #define F_PRODUCTOS "Productos.dat"
 
 struct PRECIOS{
@@ -31,6 +32,7 @@ int main(){
                 bandera = 1;
                 printf("Modificar descripcion? (Y/N) :: ");
                 scanf("%c", &op);
+                op = toupper(op);
                 switch (op){
                 case 'Y':
                     gets(producto.descripcion);
@@ -44,7 +46,7 @@ int main(){
                 switch (op)
                 {
                 case 'Y':
-                    scanf("%f", producto.precio);
+                    scanf("%f", &producto.precio);
                     break;
                 
                 default:

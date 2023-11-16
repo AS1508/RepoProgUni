@@ -7,7 +7,8 @@
         "*.excalidrawlib": "json",
         "stdio.h": "c",
         "stdlib.h": "c",
-        "random": "c"
+        "random": "c",
+        "string.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "C_Cpp.autocompleteAddParentheses": true

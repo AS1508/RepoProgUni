@@ -31,7 +31,7 @@ struct Productos buscar(int aBuscar){
     struct Productos producto;
     int bandera=0;
 
-    if(fopen(F_PRODUCTO, "rb")==NULL){printf("mefui");exit(1);}
+    if(archivo = fopen(F_PRODUCTO, "rb")==NULL){printf("mefui");exit(1);}
 
     fread(&Producto, sizeof(struct Producto),1, archivo);
     while(!feof(archivo) && bandera==0){

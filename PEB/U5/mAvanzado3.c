@@ -134,7 +134,7 @@ int leeyvalida(int li, int ls, int fin){
     //rewind(FILE*f)
     _Conocer posicion actual del archivo y cantdad de registros
     //fseek(arhivo, 0, seek-end)
-    //cantidad de registros=ftell(archivo) / sizeof(struct xxxx)
+    //cantidad de registros = ftell(archivo) / sizeof(struct xxxx)
     _cambia el nombre de un archivo por otro
     //rename(nombre archivo actual, nombre archivo mundo)
     _elimina un archivo
