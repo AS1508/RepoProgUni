@@ -1,0 +1,55 @@
+La Empresa HDP que se dedica a la venta por mayor de productos de informática,
+desea controlar los pedidos de sus clientes. Comercializa al mes de mayo del año 2020
+casi 3500 productos diferentes, que tiene identificado con su código, nombre, punto
+de pedido, stock y precio en un archivo llamado “PRODUCTOS.dat” con el siguiente
+diseño:
+
+    •Código de Producto ( int , entre 1000 y 10000).
+    •Descripción de Producto (char, 35 caracteres)
+    •Punto de Pedido (int). (Cantidad tope para solicitar reposición de producto a
+    Proveedor)
+    •Stock (int). (Actualizar restando)
+    •Pecio por unidad (float)
+
+Se ingresan luego por teclado en forma desordenada los pedidos a cumplir en el mes
+de noviembre hasta ingresar un código de producto igual a 999. Por cada pedido se
+conocen:
+
+    •Código de Producto (int, entre 1000 y 10000).
+    •Cantidad de unidades pedidas (int &gt;0).
+    •Número Cliente (int, entre 1 y 350)
+    •Día (int, entre 1 y 30) (corresponde día entrega pedido).
+
+Realizar Codificación en lenguaje “C” que permita:
+
+a_ Actualizar el campo stock con las cantidades informadas de los productos ingresados
+y encontrados en el archivo. No es necesario validar si el stock es suficiente. Al
+finalizar el ingreso de datos, generar un nuevo archivo “AREPONER.dat” con el mismo
+diseño de estructuras del archivo PRODUCTOS.dat, pero que contenga solo los datos
+de aquellos productos que necesiten reponer mercadería, es decir que han finalizado
+con Stock menor al Punto de Pedido.
+
+b_ Informar a través de una función la cantidad de pedidos de entrega de productos a
+realizar por cada día:
+Día / Cantidad de Unidades Pedidas
+1 xxx
+2 xxx
+… ….
+30 xxx
+
+c_ Informar los importes (cantidad de unidades pedidas multiplicadas por precio
+unitario) que deben abonar cada uno de los clientes en cada día del mes de noviembre
+Cliente / Día 1 2 3 4 5 …………………… 30
+1 xxxx.xx xxxx.xx xxxx.xx xxxx.xx xxxx.xx …………………... xxxx.xx
+2 xxxx.xx xxxx.xx xxxx.xx xxxx.xx xxxx.xx …………………... xxxx.xx
+3 xxxx.xx xxxx.xx xxxx.xx xxxx.xx xxxx.xx …………………... xxxx.xx
+...
+350 xxxx.xx xxxx.xx xxxx.xx xxxx.xx xxxx.xx …………………... xxxx.xx
+
+d_   Informar el porcentaje de datos rechazados por no encontrar el código de producto
+ingresado por teclado entre los del archivo (array de estructuras)
+
+NOTA: Realizar al menos 3 FUNCIONES. Una para la búsqueda del código de producto
+ingresado por teclado con los productos del archivo, otra función para la validación del
+código de producto, cliente y día ingresados por teclado y una última para informar el
+listado solicitado en el punto b.
