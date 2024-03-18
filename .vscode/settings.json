@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "CaskaydiaCove Nerd Font Mono",
+    "editor.fontFamily": "'Cascadia Code', Consolas, 'Courier New', monospace",
     "editor.fontSize": 18,
     "editor.renderWhitespace": "all",
     "files.associations": {
@@ -10,5 +10,6 @@
         "random": "c"
     },
     "C_Cpp.errorSquiggles": "disabled",
-    "C_Cpp.autocompleteAddParentheses": true
+    "C_Cpp.autocompleteAddParentheses": true,
+    "editor.fontLigatures": true
 }
