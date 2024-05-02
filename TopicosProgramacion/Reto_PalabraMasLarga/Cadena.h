@@ -1,0 +1,6 @@
+#ifndef CADENA_H_INCLUDED
+#define CADENA_H_INCLUDED
+
+
+
+#endif // CADENA_H_INCLUDED

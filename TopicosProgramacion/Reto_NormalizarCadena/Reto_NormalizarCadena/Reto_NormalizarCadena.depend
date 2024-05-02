@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1714090825 source:c:\users\alanr\onedrive\documentos\github\repoprogeb\topicosprogramacion\reto_normalizarcadena\reto_normalizarcadena\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1714091508 source:c:\users\alanr\onedrive\documentos\github\repoprogeb\topicosprogramacion\reto_normalizarcadena\reto_normalizarcadena\cadena.c
+	"Cadena.h"
+
+1714090671 c:\users\alanr\onedrive\documentos\github\repoprogeb\topicosprogramacion\reto_normalizarcadena\reto_normalizarcadena\cadena.h
+	<ctype.h>
+

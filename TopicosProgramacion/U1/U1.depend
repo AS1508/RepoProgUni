@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1713474900 source:c:\users\alanr\onedrive\documentos\github\topicos-bmp_manipulator\u1\calculos.c
+	"Calculos.h"
+	<math.h>
+
+1713474914 c:\users\alanr\onedrive\documentos\github\topicos-bmp_manipulator\u1\calculos.h
+
+1713467249 source:c:\users\alanr\onedrive\documentos\github\topicos-bmp_manipulator\u1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Calculos.h"
+

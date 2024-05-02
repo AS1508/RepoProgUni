@@ -2,10 +2,10 @@
 #include<stdlib.h>
 #include<string.h>
 #include<stdbool.h>
-#define TAM 10;
-#define SIN_ESPACIO 1;
-#define DUPLICADO 2;
-#define OK 77;
+#define TAM 10
+#define SIN_ESPACIO 1
+#define DUPLICADO 2
+#define OK 77
  
 typedef struct
 {
@@ -13,8 +13,8 @@ typedef struct
     int vec[TAM];
 }tVector;
  
-void Init(tVector);
-void Show(const tVector);
+void Init(tVector*);
+void Show(const tVector*);
  
 int main(){
     tVector v;
@@ -25,7 +25,7 @@ int main(){
     return 0;
 }
 
-void Init(tVector *v){
+void Init(tVector* v){
     //Iniciar en 0 (v->ce = 0;)
 }
 
@@ -41,8 +41,8 @@ int InsertOrdenado(tVector *vec, int value){
     if(vec->ce == TAM)
         return SIN_ESPACIO;
 
-    for(int i = 0; i<vec->ce && vec[i]<=value; i++){
-        if(value == vec->ce[i])
+    for(int i = 0; i<vec->ce && vec<=value; i++){
+        if(value == vec->ce)
             return DUPLICADO;
 
         pos = i;
