@@ -124,9 +124,9 @@ int main(){
     mostrarVector(auxP, NUEVO_TAM);
  
     free(p);
-    */
+*/
         //Matriz estatica y dinamica//
-
+/*
    int matriz[][] = //mEstatica
    {
     {1,2,3,4},
@@ -154,5 +154,6 @@ int main(){
    //triango
 
     destruirMatriz(matriz, TAM_M);
+*/
     return TODO_OK;
 }
