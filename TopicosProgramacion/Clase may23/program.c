@@ -10,6 +10,8 @@
 #define TODO_OK 15
 
 typedef int (*op)(int,int);
+typedef int (*cmpVector)(const void*, const void*);
+typedef void(*accionElemento)(void*);
 typedef struct{
     void* vec;
     size_t ce;
@@ -58,7 +60,8 @@ void cmpEnteros(const void *a, const void *b, ){
     return *pA - *pB;
 }
  
-
+void _intercambiarElementos(void *a,  void *b, size_t ce){ }
+void *_buscarMenor(const void *a, const void *b, size_t ce, cmpVector cmp){ } 
 bool crearVector(vectorD *v, size_t tElemento){
 
     v->vec = malloc(cInicial * v->tamañoElemento);
@@ -71,15 +74,27 @@ bool crearVector(vectorD *v, size_t tElemento){
     v->tamañoElemento = te;
     return true;
 }
-void mostrarVector(const vectorD *v){
-    void *final = v->vec + v->ce * v->tamañoElemento;
-    for(void *i = v->ce; *i < final + *i+=v->tamañoElemento){
-        printf("% ", );
+//void mostrarVector(const vectorD *v){
+//    void *final = v->vec + v->ce * v->tamañoElemento;
+//    for(void *i = v->ce; *i < final + *i+=v->tamañoElemento){
+//        printf("% ", );
+//    }
+//}
+
+void recorrerVector(const vectorD *v, accionElemento acc){
+    void *fin = vec->vec + vec—>ce * vec->tamE1em;
+    for (void *i = vec—>vec; i<fin; i+=vec—>tamE1em){
+        
     }
 }
-bool ordenarVectorSeleccion(vectorD *v){
+bool ordenarVectorSeleccion(vectorD *v, cmpVector cmp){
     void *final = v->vec + v->ce * v->tamañoElemento;
     void *ultimo = v->vec + (v->ce - 1) * v->tamañoElemento;
+    for(void + *i = v->ce; *i < ultimo, i+= v->tamañoElemento){
+        m = _buscarMenor(i, ultimo, v->tamañoElemento,cmp);
+        _intercambiarElementos(i, m, v->tamañoElemento);
+        
+    }
 }
 bool ampliarVector(vectorD *v){
     size_t cap = v->capacidad * 2;
@@ -118,19 +133,19 @@ void destruirVector(vectorD *v){
 }
 int main(){
     /*puntero a funciones*/
-    /*
+    
     int r;
     r = calcular(10,20,sumar);  //Funciones CallBack::Vuelve a llamar a main
     printf("%d\n", r);
     return 0;
-    */
+    
    /*Ordenamiento*/
-   /*
+   
    int vec[] = {2,43,23,3,45,7};
    size_t cantidada = sizeof(vec) / sizeof(int);
    mostrar(vec,cantidada);
    qsort(vec, cantidada, sizeof(int), cmpEnteros)
-    */
+    
    /*Vector Dinamico*/
 
     vectorD v;
